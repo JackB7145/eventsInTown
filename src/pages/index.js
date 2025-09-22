@@ -10,10 +10,17 @@ export default function Home() {
 
   useEffect(() => {
     const fetchEvents = async () => {
-      const params = new URLSearchParams({ search, startDate, endDate });
-      const res = await fetch(`/api/events?${params.toString()}`);
-      const data = await res.json();
-      setEvents(data);
+      try {
+        const params = new URLSearchParams({ search, startDate, endDate });
+        const res = await fetch(`/api/events?${params.toString()}`);
+        const data = await res.json();
+
+        // Always enforce array shape
+        setEvents(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error("Failed to fetch events:", err);
+        setEvents([]); // fallback
+      }
     };
     fetchEvents();
   }, [search, startDate, endDate]);
@@ -44,24 +51,26 @@ export default function Home() {
       </div>
 
       <div className={styles.eventList}>
-        {events.length === 0 ? (
+        {(!Array.isArray(events) || events.length === 0) ? (
           <p className={styles.noEvents}>No events found.</p>
         ) : (
           events.map((ev) => (
-            <div key={ev.id} className={styles.eventCard}>
+            <div key={ev.id || ev.event_name} className={styles.eventCard}>
               <h2 className={styles.eventTitle}>{ev.event_name}</h2>
               <p className={styles.eventDate}>{ev.event_date}</p>
               <p className={styles.eventDescription}>
                 {ev.description || "No description available."}
               </p>
-              <a
-                className={styles.eventLink}
-                href={ev.link}
-                target="_blank"
-                rel="noreferrer"
-              >
-                More info →
-              </a>
+              {ev.link && (
+                <a
+                  className={styles.eventLink}
+                  href={ev.link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  More info →
+                </a>
+              )}
             </div>
           ))
         )}
