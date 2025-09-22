@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📅 Events Dashboard
 
-## Getting Started
+A lightweight **Next.js application** that displays upcoming events with search and filtering capabilities.  
+This dashboard is powered by a daily-updated **ETL pipeline**, which scrapes and transforms event data from multiple sources before loading it into a Postgres database.
 
-First, run the development server:
+---
 
+## 🔑 Key Features
+- **Daily Updates** → Events are refreshed automatically through a GitHub Actions ETL workflow.  
+- **Search & Filters** → Search by event name/description and filter by date range.  
+- **Clean UI** → Simple, professional dashboard built with Next.js and CSS.  
+- **Direct Links** → Each event includes a link to more information.  
+
+---
+
+## ⚙️ How It Works
+1. **ETL Pipeline**  
+   - Scrapes events from multiple sources (e.g., APIs, websites).  
+   - Transforms and cleans the data.  
+   - Loads it into a Postgres database.  
+
+2. **Next.js App**  
+   - Provides a frontend to browse, search, and filter events.  
+   - Connects to an API route (`/api/events`) that queries the database.  
+
+This ensures the dashboard always reflects the **latest events**, updated daily.  
+
+---
+
+## 🚀 Getting Started
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
