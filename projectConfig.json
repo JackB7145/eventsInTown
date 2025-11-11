@@ -1,0 +1,19 @@
+{
+  "name": "Events Dashboard ETL Pipeline",
+  "description": "End-to-end ETL pipeline feeding a public dashboard of events.",
+  "fullDescription": "Designed and implemented a data pipeline that scrapes event data from multiple sources, transforms and cleans it, loads it into a PostgreSQL database, and exposes a Next.js dashboard interface for end-users to explore upcoming events. The pipeline runs daily via GitHub Actions, ensuring fresh and accurate data.",
+  "techStack": ["Python", "ETL", "PostgreSQL", "Next.js", "Node.js", "GitHub Actions"],
+  "features": [
+    "Daily automated scraping and data ingestion job via GitHub Actions",
+    "Data transformation and cleaning using Python scripts",
+    "PostgreSQL data warehouse design with optimized indexing",
+    "User-facing dashboard in Next.js with search and filters",
+    "Real-time updates from fresh data refresh jobs",
+    "Error notifications for failed ETL runs via webhook alerts"
+  ],
+  "metrics": {
+    "commits": "30",
+    "pullRequests": "2",
+    "linesOfCode": "~4,500"
+  }
+}
